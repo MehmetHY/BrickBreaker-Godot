@@ -7,8 +7,9 @@
 [ext_resource path="res://Prefabs/DeathZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Brick.tscn" type="PackedScene" id=6]
 
-[node name="Level01" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource( 2 )
+NEXT_SCENE = "res://Scenes/Level04.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 1045 )
@@ -23,16 +24,28 @@ position = Vector2( 960, 1000 )
 [node name="Bricks" type="Node2D" parent="."]
 
 [node name="Brick" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 448, 256 )
+position = Vector2( 448, 320 )
+_health = 2
 
 [node name="Brick2" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 704, 256 )
+position = Vector2( 704, 448 )
+_health = 2
 
 [node name="Brick3" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 960, 256 )
+position = Vector2( 960, 576 )
 
 [node name="Brick4" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 1216, 256 )
+position = Vector2( 1216, 448 )
+_health = 2
 
 [node name="Brick5" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 1472, 256 )
+position = Vector2( 1472, 320 )
+_health = 2
+
+[node name="Brick6" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 256, 192 )
+_health = 3
+
+[node name="Brick7" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 1664, 192 )
+_health = 3

@@ -7,8 +7,9 @@
 [ext_resource path="res://Prefabs/DeathZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Brick.tscn" type="PackedScene" id=6]
 
-[node name="Level01" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource( 2 )
+NEXT_SCENE = "res://Scenes/Level05.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 1045 )
@@ -23,16 +24,54 @@ position = Vector2( 960, 1000 )
 [node name="Bricks" type="Node2D" parent="."]
 
 [node name="Brick" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 448, 256 )
+position = Vector2( 448, 384 )
+_health = 2
 
 [node name="Brick2" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 704, 256 )
+position = Vector2( 704, 384 )
+_health = 2
 
 [node name="Brick3" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 960, 256 )
+position = Vector2( 960, 384 )
+_health = 2
 
 [node name="Brick4" parent="Bricks" instance=ExtResource( 6 )]
-position = Vector2( 1216, 256 )
+position = Vector2( 1216, 384 )
+_health = 2
 
 [node name="Brick5" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 1472, 384 )
+_health = 2
+
+[node name="Brick6" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 448, 256 )
+
+[node name="Brick15" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 192, 256 )
+
+[node name="Brick10" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 704, 256 )
+
+[node name="Brick11" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 960, 256 )
+
+[node name="Brick12" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 1216, 256 )
+
+[node name="Brick13" parent="Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1472, 256 )
+
+[node name="Brick14" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 1728, 256 )
+
+[node name="Brick7" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 704, 512 )
+_health = 3
+
+[node name="Brick8" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 960, 512 )
+_health = 3
+
+[node name="Brick9" parent="Bricks" instance=ExtResource( 6 )]
+position = Vector2( 1216, 512 )
+_health = 3

@@ -13,7 +13,7 @@ public class LevelManager : Node2D
     private int _brickCount;
     private static PackedScene _ballScene = ResourceLoader.Load<PackedScene>("res://Prefabs/Ball.tscn");
 
-    public readonly string NEXT_SCENE = GameManager.MainMenuScenePath;
+    [Export] public readonly string NEXT_SCENE = GameManager.MainMenuScenePath;
 
     public override void _Ready()
     {
