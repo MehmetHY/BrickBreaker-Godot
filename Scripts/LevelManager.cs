@@ -13,4 +13,23 @@ public class LevelManager : Node2D
         _ball.ActivePlayer = _player;
         GameManager.IsPlaying = true;
     }
+
+    public override void _Process(float delta)
+    {
+        if (GameManager.IsPlaying)
+        {
+            CheckLaunch();
+        }
+    }
+
+    private void CheckLaunch()
+    {
+        if (!_ball.IsLaunched)
+        {
+            if (Input.IsActionJustReleased("Fire"))
+            {
+                _ball.Launch();
+            }
+        }
+    }
 }
