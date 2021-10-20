@@ -11,6 +11,8 @@ public class LevelManager : Node2D
     private bool _missedBall = false;
     private PackedScene _ballScene = ResourceLoader.Load<PackedScene>("res://Prefabs/Ball.tscn");
 
+    public readonly string NEXT_SCENE = GameManager.MainMenuScenePath;
+
     public override void _Ready()
     {
         _ball = GetNode<Ball>("Ball");
@@ -70,7 +72,7 @@ public class LevelManager : Node2D
 
     private void HandleGameOver()
     {
-        GD.Print("GameOVer");
+        GameManager.ChangeScene(this, GameManager.MainMenuScenePath);
     }
 
     private void OnMissedBall(Node _)
