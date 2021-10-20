@@ -6,10 +6,12 @@ public class LevelManager : Node2D
     private Ball _ball;
     private Player _player;
     private Area2D _deathZone;
+    private Node2D _bricks;
 
     private bool _shouldLaunch = false;
     private bool _missedBall = false;
-    private PackedScene _ballScene = ResourceLoader.Load<PackedScene>("res://Prefabs/Ball.tscn");
+    private int _brickCount;
+    private static PackedScene _ballScene = ResourceLoader.Load<PackedScene>("res://Prefabs/Ball.tscn");
 
     public readonly string NEXT_SCENE = GameManager.MainMenuScenePath;
 
@@ -18,8 +20,17 @@ public class LevelManager : Node2D
         _ball = GetNode<Ball>("Ball");
         _player = GetNode<Player>("Player");
         _deathZone = GetNode<Area2D>("DeathZone");
+        _bricks = GetNode<Node2D>("Bricks");
         _deathZone.Connect("body_entered", this, nameof(OnMissedBall));
         _ball.ActivePlayer = _player;
+        _brickCount = _bricks.GetChildCount();
+
+        foreach (Brick brick in _bricks.GetChildren())
+        {
+            brick.Connect("body_entered", this, nameof(HandleBrickDamage), new Godot.Collections.Array(brick));
+            GD.Print(brick.Name);
+        }
+
         GameManager.IsPlaying = true;
     }
 
@@ -78,5 +89,24 @@ public class LevelManager : Node2D
     private void OnMissedBall(Node _)
     {
         _missedBall = true;
+    }
+
+    private void HandleBrickDamage(Node _, Brick brick)
+    {
+        GD.Print("hit");
+        if (brick.TakeDamage() < 1)
+        {
+            brick.QueueFree();
+            _brickCount--;
+            if (_brickCount < 1)
+            {
+                LoadNextLevel();
+            }
+        }
+    }
+
+    private void LoadNextLevel()
+    {
+        GameManager.ChangeScene(this, NEXT_SCENE);
     }
 }
