@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/LevelManager.cs" type="Script" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://Prefabs/Walls.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/DeathZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Brick.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/PauseUI.tscn" type="PackedScene" id=7]
 
 [node name="Level" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 2 )
 NEXT_SCENE = "res://Scenes/Level04.tscn"
 
@@ -49,3 +51,9 @@ _health = 3
 [node name="Brick7" parent="Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1664, 192 )
 _health = 3
+
+[node name="PauseUI" parent="." instance=ExtResource( 7 )]
+margin_left = 864.0
+margin_top = 512.0
+margin_right = 1062.0
+margin_bottom = 625.0

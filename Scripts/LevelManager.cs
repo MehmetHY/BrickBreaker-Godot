@@ -7,6 +7,7 @@ public class LevelManager : Node2D
     private Player _player;
     private Area2D _deathZone;
     private Node2D _bricks;
+    private CenterContainer _pauseUI;
 
     private bool _shouldLaunch = false;
     private bool _missedBall = false;
@@ -21,6 +22,9 @@ public class LevelManager : Node2D
         _player = GetNode<Player>("Player");
         _deathZone = GetNode<Area2D>("DeathZone");
         _bricks = GetNode<Node2D>("Bricks");
+        _pauseUI = GetNode<CenterContainer>("PauseUI");
+        _pauseUI.Visible = false;
+
         _deathZone.Connect("body_entered", this, nameof(OnMissedBall));
         _ball.ActivePlayer = _player;
         _brickCount = _bricks.GetChildCount();
@@ -39,6 +43,25 @@ public class LevelManager : Node2D
         if (GameManager.IsPlaying)
         {
             HandleLaunch(@event);
+            HandlePause(@event);
+        }
+    }
+
+    private void HandlePause(InputEvent @event)
+    {
+        if (@event.IsActionReleased("Pause"))
+        {
+            GD.Print("Paused");
+            if (GetTree().Paused)
+            {
+                GetTree().Paused = false;
+                _pauseUI.Visible = false;
+            }
+            else
+            {
+                GetTree().Paused = true;
+                _pauseUI.Visible = true;
+            }
         }
     }
 
