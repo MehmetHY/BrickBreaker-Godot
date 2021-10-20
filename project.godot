@@ -53,6 +53,13 @@ Pause={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Ball"
+2d_physics/layer_3="DeathZone"
+2d_physics/layer_4="Static"
+
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -8,14 +8,15 @@
 radius = 20.1532
 
 [node name="Ball" type="RigidBody2D"]
-mode = 3
+collision_layer = 2
+collision_mask = 13
+mode = 2
 mass = 10.0
 physics_material_override = ExtResource( 3 )
 gravity_scale = 0.0
 continuous_cd = 2
 contacts_reported = 1
 contact_monitor = true
-sleeping = true
 linear_damp = 0.0
 script = ExtResource( 2 )
 
